@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Filament\Resources\MaintenanceTicketResource\Pages;
+
+use App\Filament\Resources\MaintenanceTicketResource;
+use Filament\Resources\Pages\CreateRecord;
+
+class CreateMaintenanceTicketResource extends CreateRecord
+{
+    protected static string $resource = MaintenanceTicketResource::class;
+}
