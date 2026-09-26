@@ -121,7 +121,7 @@
             <h2>{{ __('site.services.title') }}</h2>
             <p>{{ __('site.services.subtitle') }}</p>
         </div>
-        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+        <div class="services-grid">
             @foreach($services as $i => $service)
             <div class="service-card-bg" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}" style="background-image: url('{{ $service->image_path ? asset('storage/' . $service->image_path) : 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=800&auto=format&fit=crop' }}');">
                 <div class="service-icon">
@@ -214,7 +214,7 @@
             </div>
 
             {{-- Form --}}
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="calc-form-row">
                 <div class="calc-form-group">
                     <label>{{ __('site.calculator.monthly_bill') }}</label>
                     <input type="number" x-model.number="monthlyBill" placeholder="50000" min="0">

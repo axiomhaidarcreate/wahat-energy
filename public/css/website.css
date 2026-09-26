@@ -403,6 +403,36 @@ ul, ol {
     color: var(--text-primary);
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 8px;
+    z-index: 10;
+}
+.navbar-toggle .toggle-text {
+    display: none;
+}
+
+.nav-btn-staff {
+    padding: 10px 24px;
+    font-size: 0.85rem;
+    margin-inline-end: 10px;
+    border: 1px solid #f59e0b;
+    color: #f59e0b;
+    border-radius: 8px;
+    background: transparent;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn-staff:hover {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.nav-btn-quote {
+    padding: 10px 24px;
+    font-size: 0.85rem;
 }
 
 /* ============================================
@@ -1576,6 +1606,19 @@ ul, ol {
     color: var(--primary);
 }
 
+.calc-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .calc-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
 .calc-form-group {
     margin-bottom: 24px;
 }
@@ -2129,7 +2172,7 @@ ul, ol {
    ============================================ */
 @media (max-width: 1024px) {
     .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
     }
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2150,36 +2193,66 @@ ul, ol {
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .navbar-links { display: none; }
-    .navbar-toggle { display: block; }
+    .navbar-links { display: none !important; }
+    .navbar-toggle { display: flex !important; }
+    .navbar-actions .lang-switch,
+    .navbar-actions .nav-btn-staff,
+    .navbar-actions .nav-btn-quote {
+        display: none !important;
+    }
     .calc-results {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-company-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .container {
+        padding: 0 20px;
     }
 }
 
 @media (max-width: 768px) {
     :root {
-        --section-padding: 64px 0;
+        --section-padding: 60px 0;
+    }
+
+    .container {
+        padding: 0 16px;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .hero p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding: 0 8px;
     }
 
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-outline {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
     }
 
     .services-grid,
     .products-grid,
     .projects-grid,
-    .why-grid {
-        grid-template-columns: 1fr;
+    .why-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
     }
 
     .how-steps {
@@ -2189,12 +2262,25 @@ ul, ol {
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 20px 12px;
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
     }
 
     .calc-type-selector {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+    }
+
+    .calc-type-btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .calc-results {
@@ -2202,7 +2288,8 @@ ul, ol {
     }
 
     .calculator-container {
-        padding: 28px 20px;
+        padding: 24px 16px;
+        border-radius: var(--radius-lg);
     }
 
     .footer-grid {
@@ -2217,25 +2304,326 @@ ul, ol {
     .cta-buttons {
         flex-direction: column;
         align-items: center;
+        padding: 0 16px;
+    }
+
+    .cta-buttons .btn-outline,
+    .cta-buttons .btn-whatsapp,
+    .cta-buttons .btn-primary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+        padding: 0 8px;
     }
 
     .section-header h2 {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
+    }
+
+    .section-header p {
+        font-size: 0.95rem;
+    }
+
+    /* Navbar mobile fixes */
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+        gap: 8px;
+    }
+
+    .navbar-brand .nav-logo {
+        height: 34px;
+    }
+
+    .navbar-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px;
+        height: 48px;
+        border-radius: 50px;
+        background: var(--gradient-primary);
+        color: #0f172a;
+        border: none;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        z-index: 1001;
+    }
+    .navbar-toggle .toggle-text {
+        font-size: 1rem;
+        font-weight: 800;
+        font-family: var(--font-ar);
+    }
+
+    .page-hero {
+        padding: 100px 0 40px;
+    }
+
+    .hero {
+        padding-top: 80px;
+        min-height: auto;
+        padding-bottom: 60px;
+    }
+
+    .hide-mobile {
+        display: none !important;
+    }
+
+    /* Hero Logo responsive */
+    .hero-logo {
+        width: 260px;
+        height: 260px;
+        margin-bottom: 24px;
+    }
+
+    .gear-shape {
+        width: 220px;
+        height: 220px;
+        border-width: 20px;
+    }
+
+    .circular-text {
+        width: 250px;
+        height: 250px;
+    }
+
+    .logo-inner {
+        width: 150px;
+        height: 150px;
+        padding: 12px;
+    }
+
+    .hero-company-name {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+    }
+
+    /* Service cards background responsive */
+    .service-card-bg {
+        min-height: 280px;
+        padding: 30px 16px;
+    }
+
+    .service-card-bg h3 {
+        font-size: 1.25rem;
+    }
+
+    /* Product 3D cards responsive */
+    .product-3d-card {
+        width: 240px;
+        height: 340px;
+    }
+
+    .products-3d-scroll-container {
+        padding: 20px 10px;
+    }
+
+    .category-block {
+        margin-bottom: 48px;
+    }
+
+    .category-title {
+        font-size: 1.3rem;
+    }
+
+    /* Project cards responsive */
+    .project-card {
+        height: 280px;
+    }
+
+    .project-overlay {
+        padding: 20px;
+    }
+
+    /* Why cards responsive */
+    .why-card {
+        padding: 28px 16px;
+    }
+
+    /* Testimonial cards responsive */
+    .testimonial-card {
+        padding: 24px;
+    }
+
+    /* FAQ responsive */
+    .faq-question {
+        padding: 16px 18px;
+        font-size: 0.9rem;
+    }
+
+    .faq-answer {
+        padding: 0 18px 16px;
+        font-size: 0.88rem;
+    }
+
+    /* CTA Section responsive */
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-content p {
+        font-size: 0.95rem;
+        padding: 0 8px;
+    }
+
+    /* Footer responsive */
+    .footer {
+        padding: 48px 0 0;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    /* Filter bar responsive */
+    .filter-bar {
+        flex-direction: column;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .search-box {
+        min-width: auto;
+        width: 100%;
+    }
+
+    /* Detail page responsive */
+    .detail-card {
+        padding: 24px 16px;
+    }
+
+    .detail-image-box {
+        padding: 24px;
+        min-height: 250px;
+    }
+
+    /* Contact page responsive */
+    .contact-info-card {
+        padding: 24px 16px;
+    }
+
+    .contact-form-card {
+        padding: 24px 16px;
     }
 }
 
-/* Mobile Nav */
+/* Extra small devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 16px 8px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    .navbar-brand {
+        font-size: 0.85rem;
+    }
+
+    .navbar-brand .nav-logo {
+        height: 28px;
+    }
+
+    .hero-logo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .gear-shape {
+        width: 180px;
+        height: 180px;
+        border-width: 16px;
+    }
+
+    .circular-text {
+        width: 210px;
+        height: 210px;
+    }
+
+    .logo-inner {
+        width: 130px;
+        height: 130px;
+        padding: 10px;
+    }
+
+    .product-3d-card {
+        width: 220px;
+        height: 300px;
+    }
+
+    .brands-track .brand-item {
+        font-size: 1.2rem;
+        padding: 8px 18px;
+    }
+
+    .cta-phone-card {
+        padding: 12px 14px;
+    }
+
+    .phone-number {
+        font-size: 1rem;
+    }
+
+    .phone-icon-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        padding: 12px 24px;
+        font-size: 0.88rem;
+    }
+}
+
+/* Mobile Nav Overlay */
 .mobile-menu {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(10, 14, 23, 0.97);
-    backdrop-filter: blur(20px);
-    z-index: 999;
+    background: rgba(10, 14, 23, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 10000;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 8px;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .mobile-menu.active {
@@ -2243,31 +2631,50 @@ ul, ol {
 }
 
 .mobile-menu a {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
-    padding: 12px 24px;
+    padding: 14px 32px;
     font-weight: 600;
     transition: var(--transition);
+    border-radius: var(--radius-sm);
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
 }
 
-.mobile-menu a:hover {
+.mobile-menu a:hover,
+.mobile-menu a:active {
     color: var(--primary);
+    background: rgba(245, 158, 11, 0.08);
 }
 
 .mobile-close {
     position: absolute;
-    top: 24px;
-    right: 24px;
-    background: none;
-    border: none;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-light);
     color: var(--text-primary);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.mobile-close:hover {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
 .rtl .mobile-close {
     right: auto;
-    left: 24px;
+    left: 20px;
 }
 
 /* ============================================

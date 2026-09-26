@@ -34,17 +34,18 @@
         </div>
 
         <div class="navbar-actions">
-            <a href="{{ route('locale.switch', app()->getLocale() == 'ar' ? 'en' : 'ar') }}" class="lang-switch">
+            <a href="{{ route('locale.switch', app()->getLocale() == 'ar' ? 'en' : 'ar') }}" class="lang-switch hide-mobile">
                 <i class="fa-solid fa-globe"></i> {{ __('site.nav.language') }}
             </a>
-            <a href="{{ url('/admin') }}" class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem; margin-inline-end: 10px; border: 1px solid #f59e0b; color: #f59e0b; border-radius: 8px; background: transparent; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: all 0.3s ease;">
+            <a href="{{ url('/admin') }}" class="btn-secondary hide-mobile nav-btn-staff">
                 <i class="fa-solid fa-user-lock"></i> {{ __('site.nav.staff_login') }}
             </a>
-            <a href="{{ route('contact') }}" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">
+            <a href="{{ route('contact') }}" class="btn-primary hide-mobile nav-btn-quote">
                 {{ __('site.nav.request_quote') }}
             </a>
             <button class="navbar-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                 <i class="fa-solid fa-bars"></i>
+                <span class="toggle-text">القائمة</span>
             </button>
         </div>
     </div>
@@ -61,8 +62,15 @@
     <a href="{{ route('gallery') }}" onclick="toggleMobileMenu()">{{ __('site.nav.gallery') }}</a>
     <a href="{{ route('calculator') }}" onclick="toggleMobileMenu()">{{ __('site.nav.calculator') }}</a>
     <a href="{{ route('contact') }}" onclick="toggleMobileMenu()">{{ __('site.nav.contact') }}</a>
-    <a href="{{ url('/admin') }}" onclick="toggleMobileMenu()" style="color: #f59e0b;"><i class="fa-solid fa-user-lock"></i> {{ __('site.nav.staff_login') }}</a>
-    <a href="{{ route('locale.switch', app()->getLocale() == 'ar' ? 'en' : 'ar') }}" class="lang-switch" style="margin-top: 16px;">
+    
+    <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin: 15px 0;"></div>
+    
+    <a href="{{ route('contact') }}" onclick="toggleMobileMenu()" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #0f172a; border-radius: 50px;">
+        {{ __('site.nav.request_quote') }}
+    </a>
+    
+    <a href="{{ url('/admin') }}" onclick="toggleMobileMenu()" style="color: #f59e0b; font-size: 1.05rem;"><i class="fa-solid fa-user-lock"></i> {{ __('site.nav.staff_login') }}</a>
+    <a href="{{ route('locale.switch', app()->getLocale() == 'ar' ? 'en' : 'ar') }}" class="lang-switch" style="margin-top: 5px; font-size: 1.05rem;">
         <i class="fa-solid fa-globe"></i> {{ __('site.nav.language') }}
     </a>
 </div>
