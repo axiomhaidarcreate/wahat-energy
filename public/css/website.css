@@ -2197,7 +2197,12 @@ ul, ol {
     .navbar-toggle { display: flex !important; }
     .navbar-actions .lang-switch,
     .navbar-actions .nav-btn-staff,
-    .navbar-actions .nav-btn-quote {
+    .navbar-actions .nav-btn-quote,
+    .navbar-actions .btn-primary,
+    .navbar-actions .btn-secondary {
+        display: none !important;
+    }
+    .hide-mobile {
         display: none !important;
     }
     .calc-results {
@@ -2609,37 +2614,58 @@ ul, ol {
     }
 }
 
-/* Mobile Nav Overlay */
+/* Mobile Nav Sidebar (Drawer) */
 .mobile-menu {
-    display: none;
     position: fixed;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    right: -120%; /* Hidden off-screen by default */
+    left: auto;
+    width: 300px;
+    max-width: 85%;
     background: rgba(10, 14, 23, 0.98);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     z-index: 10000;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 8px;
-    padding: 20px;
+    padding: 80px 20px 20px; /* Top padding for close button */
     overflow-y: auto;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+}
+
+body:not(.rtl) .mobile-menu {
+    right: auto;
+    left: -120%;
+    box-shadow: 5px 0 25px rgba(0,0,0,0.5);
 }
 
 .mobile-menu.active {
-    display: flex;
+    right: 0;
+}
+
+body:not(.rtl) .mobile-menu.active {
+    left: 0;
+    right: auto;
 }
 
 .mobile-menu a {
     font-size: 1.15rem;
     color: var(--text-secondary);
-    padding: 14px 32px;
+    padding: 12px 20px;
     font-weight: 600;
     transition: var(--transition);
     border-radius: var(--radius-sm);
     width: 100%;
-    max-width: 320px;
-    text-align: center;
+    text-align: right;
+}
+
+body:not(.rtl) .mobile-menu a {
+    text-align: left;
 }
 
 .mobile-menu a:hover,
