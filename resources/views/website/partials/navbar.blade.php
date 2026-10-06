@@ -3,7 +3,7 @@
     <div class="container">
         <a href="{{ route('home') }}" class="navbar-brand">
             <img src="{{ asset('images/logo.png') }}" alt="{{ __('site.site_name') }}" class="nav-logo">
-            {{ __('site.site_name') }}
+            <span class="brand-text">{{ __('site.site_name') }}</span>
         </a>
 
         <div class="navbar-links" id="navbarLinks">

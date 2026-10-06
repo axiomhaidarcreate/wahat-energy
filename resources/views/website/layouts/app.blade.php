@@ -61,7 +61,7 @@
     <style>
         @yield('extra_css')
     </style>
-    <link rel="stylesheet" href="{{ asset('css/website.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/website.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/chatbot.css') }}">
 </head>
 <body class="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
