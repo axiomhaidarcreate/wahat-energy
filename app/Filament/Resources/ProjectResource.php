@@ -25,7 +25,7 @@ class ProjectResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->schema([
-            Forms\Components\Section::make('معلومات المشروع الأساسية')
+            \Filament\Schemas\Components\Section::make('معلومات المشروع الأساسية')
                 ->schema([
                     Forms\Components\TextInput::make('project_code')->label('كود المشروع')->required()->unique(ignoreRecord: true),
                     Forms\Components\TextInput::make('name')->label('اسم المشروع')
@@ -47,7 +47,7 @@ class ProjectResource extends Resource
                     Forms\Components\DatePicker::make('start_date')->label('تاريخ البدء'),
                     Forms\Components\DatePicker::make('end_date')->label('تاريخ الانتهاء'),
                 ])->columns(2),
-            Forms\Components\Section::make('معلومات العرض في الموقع')
+            \Filament\Schemas\Components\Section::make('معلومات العرض في الموقع')
                 ->schema([
                     Forms\Components\FileUpload::make('image_path')
                         ->label('صورة المشروع')
