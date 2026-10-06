@@ -52,8 +52,14 @@ Route::get('/debug-log', function() {
     $logFile = storage_path('logs/laravel.log');
     if (!file_exists($logFile)) return 'No log file';
     
-    $content = file_get_contents($logFile);
-    return response('<pre>' . htmlspecialchars(substr($content, -8000)) . '</pre>', 200)
+    $lines = file($logFile);
+    $errors = array_filter($lines, function($line) {
+        return str_contains($line, 'production.ERROR') || str_contains($line, 'local.ERROR');
+    });
+    
+    $lastErrors = array_slice($errors, -5);
+    
+    return response('<pre dir="ltr" style="background:#222;color:#fff;padding:20px;white-space:pre-wrap;">' . implode("\n\n", $lastErrors) . '</pre>', 200)
         ->header('Content-Type', 'text/html; charset=utf-8');
 });
 
