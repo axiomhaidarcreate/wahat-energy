@@ -46,3 +46,14 @@ Route::get('/system/clear-cache-now', function() {
     return 'Cache Cleared Successfully!';
 });
 
+Route::get('/debug-log', function() {
+    if (request('key') !== 'wahat2026') return abort(403);
+    
+    $logFile = storage_path('logs/laravel.log');
+    if (!file_exists($logFile)) return 'No log file';
+    
+    $content = file_get_contents($logFile);
+    return response('<pre>' . htmlspecialchars(substr($content, -8000)) . '</pre>', 200)
+        ->header('Content-Type', 'text/html; charset=utf-8');
+});
+
