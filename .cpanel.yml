@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/wahatene/wahat-energy
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R public/* /home2/wahatene/public_html
