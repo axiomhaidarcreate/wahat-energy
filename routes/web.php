@@ -39,3 +39,10 @@ Route::middleware([\App\Http\Middleware\SetLocale::class])->group(function () {
     Route::post('/contact', [WebsiteController::class, 'submitContact'])->name('contact.submit');
 });
 
+
+// Secret Cache Clear Route
+Route::get('/system/clear-cache-now', function() {
+    Artisan::call('optimize:clear');
+    return 'Cache Cleared Successfully!';
+});
+
