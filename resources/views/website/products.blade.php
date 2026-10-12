@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-@section('title', __('site.nav.products') . ' | ' . __('site.site_name'))
+@section('title', 'منتجات ومكونات الطاقة الشمسية في السعودية | ألواح، بطاريات BESS، وانفرترات | واحة إنرجي')
+@section('meta_description', 'تصفح أفضل منتجات ومكونات الطاقة الشمسية في السعودية من واحة إنرجي: توريد ألواح شمسية، بطاريات تخزين الطاقة BESS، ومحولات وانفرترات On-Grid و Hybrid بأعلى المعايير.')
+@section('meta_keywords', 'توريد وتركيب الألواح الشمسية, توريد وتركيب انفرترات الطاقة الشمسية, بطاريات تخزين الطاقة BESS, أنظمة تخزين الطاقة بالبطاريات, Solar Inverter Supplier Saudi Arabia, Solar Panel Installation Saudi Arabia, BESS Battery Energy Storage System')
 
 @section('content')
 

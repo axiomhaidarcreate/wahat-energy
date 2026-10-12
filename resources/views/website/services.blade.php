@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-@section('title', __('site.nav.services') . ' | ' . __('site.site_name'))
+@section('title', 'خدمات الطاقة الشمسية في السعودية | توريد وتركيب وصيانة | واحة إنرجي')
+@section('meta_description', 'خدمات متكاملة من شركة واحة إنرجي: توريد وتركيب ألواح شمسية للمنازل والمصانع، مقاول طاقة شمسية Solar EPC Contractor، أنظمة On Grid و Off Grid و Hybrid، بطاريات تخزين BESS وصيانة O&M في السعودية.')
+@section('meta_keywords', 'شركة تركيب ألواح شمسية, شركة أنظمة الطاقة الشمسية, مقاول طاقة شمسية, توريد وتركيب الألواح الشمسية, تنفيذ مشاريع الطاقة الشمسية, تركيب أنظمة الطاقة الشمسية للمصانع, شركة صيانة أنظمة الطاقة الشمسية, توريد وتركيب انفرترات الطاقة الشمسية, أنظمة ضخ المياه بالطاقة الشمسية, Solar PV System Installation, Solar EPC Contractor, Solar Pumping System, Solar System Operation and Maintenance')
 
 @section('content')
 

@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-@section('title', __('site.nav.calculator') . ' | ' . __('site.site_name'))
+@section('title', 'حاسبة أسعار وتكلفة أنظمة الطاقة الشمسية في السعودية | واحة إنرجي')
+@section('meta_description', 'احسب تكلفة تركيب الطاقة الشمسية وأسعار الأنظمة للمنازل والمصانع في السعودية بدقة. استخرج عروض أسعار أنظمة On Grid و Off Grid وسعة بطاريات التخزين BESS مجاناً.')
+@section('meta_keywords', 'أسعار أنظمة الطاقة الشمسية في السعودية, تكلفة تركيب الطاقة الشمسية, عروض أسعار الطاقة الشمسية, تركيب طاقة شمسية للمنازل, تركيب أنظمة الطاقة الشمسية للمصانع, حاسبة الطاقة الشمسية, Solar Panel Installation Saudi Arabia, Commercial Solar Power Systems')
 
 @section('content')
 

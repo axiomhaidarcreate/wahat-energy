@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-@section('title', __('site.nav.contact') . ' | ' . __('site.site_name'))
+@section('title', 'تواصل معنا | طلب عرض سعر واستشارة طاقة شمسية في السعودية | واحة إنرجي')
+@section('meta_description', 'تواصل مع شركة واحة إنرجي في الرياض للحصول على استشارة مجانية وعروض أسعار لتركيب أنظمة الطاقة الشمسية للمنازل والمصانع والمزارع في كافة مناطق السعودية.')
+@section('meta_keywords', 'عروض أسعار الطاقة الشمسية, شركة طاقة شمسية في السعودية, مقاول طاقة شمسية, أسعار أنظمة الطاقة الشمسية في السعودية, Solar Energy Company Riyadh, Solar Energy Company in Saudi Arabia')
 
 @section('content')
 

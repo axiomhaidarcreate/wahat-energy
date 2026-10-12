@@ -93,7 +93,7 @@ return [
     'hero' => [
         'title_1' => 'Powering a Smarter Future',
         'title_2' => 'with Clean Solar Energy',
-        'subtitle' => 'Comprehensive solar energy solutions for homes, businesses, and industrial & agricultural projects',
+        'subtitle' => 'Leading Solar Energy Company in Saudi Arabia providing On-Grid, Off-Grid, Hybrid solar power systems, BESS battery storage, and EPC contracting for homes and industries',
         'btn_calculator' => 'Calculate Your System',
         'btn_quote' => 'Request a Quote',
     ],
@@ -107,7 +107,7 @@ return [
     // Services
     'services' => [
         'title' => 'Our Services',
-        'subtitle' => 'Comprehensive and integrated solar energy solutions from study to operation',
+        'subtitle' => 'Comprehensive and integrated solar energy solutions from study and design to EPC installation and O&M',
         'items' => [
             ['icon' => 'fa-compass-drafting', 'title' => 'Engineering Studies & Design', 'desc' => 'Comprehensive feasibility studies and precise engineering design for solar energy systems tailored to your site\'s environmental and technical requirements'],
             ['icon' => 'fa-solar-panel', 'title' => 'Supply & Installation', 'desc' => 'Supply and installation of solar energy systems using the latest global technologies with guaranteed quality and optimal performance'],
@@ -126,18 +126,18 @@ return [
         'request_quote' => 'Request Quote',
         'in_stock' => 'In Stock',
         'out_of_stock' => 'Out of Stock',
-        'currency' => 'YER',
+        'currency' => 'SAR',
         'view_all' => 'View All Products',
     ],
 
     // Calculator
     'calculator' => [
         'title' => 'Solar Calculator',
-        'subtitle' => 'Calculate your solar energy needs in seconds',
+        'subtitle' => 'Calculate your solar energy needs and estimated system cost in seconds',
         'type_home' => 'Home',
         'type_business' => 'Business',
         'type_industrial' => 'Industrial',
-        'monthly_bill' => 'Monthly Electricity Bill (YER)',
+        'monthly_bill' => 'Monthly Electricity Bill (SAR)',
         'area' => 'Available Area (m²)',
         'calculate' => 'Calculate Now',
         'results' => 'Analysis Results',
@@ -165,7 +165,7 @@ return [
     // Projects
     'projects' => [
         'title' => 'Our Projects',
-        'subtitle' => 'We take pride in a proven track record of successful projects across various sectors',
+        'subtitle' => 'We take pride in a proven track record of successful projects across residential, commercial, and industrial sectors',
         'view_project' => 'View Project',
         'view_all' => 'View All Projects',
         'location' => 'Location',
@@ -195,24 +195,25 @@ return [
     // FAQ
     'faq' => [
         'title' => 'Frequently Asked Questions',
-        'subtitle' => 'Answers to the most common questions about solar energy',
+        'subtitle' => 'Answers to common questions regarding solar system installation and pricing in Saudi Arabia',
         'items' => [
-            ['q' => 'What is the lifespan of solar panels?', 'a' => 'Solar panels have a lifespan of 25 to 30 years with a performance guarantee maintaining efficiency of no less than 80% throughout the warranty period.'],
-            ['q' => 'How much does a home solar system installation cost?', 'a' => 'The cost depends on system size and your electricity consumption. Use our solar calculator to get an accurate estimate, or contact us for a custom quote.'],
-            ['q' => 'Do solar panels work on cloudy days?', 'a' => 'Yes, solar panels work even on cloudy days, though production is lower. Panels produce about 10-25% of their maximum output in cloudy conditions.'],
-            ['q' => 'What warranty period do you offer?', 'a' => 'We offer a comprehensive warranty including a 12-year product warranty and a 25-year performance warranty on solar panels, plus warranty on installation and labor.'],
-            ['q' => 'How long does system installation take?', 'a' => 'It depends on the project size. A residential system typically takes 2-5 days, while commercial and industrial projects may take 1-4 weeks.'],
+            ['q' => 'What is the cost of solar panel installation and system prices in Saudi Arabia?', 'a' => 'Solar panel system prices in Saudi Arabia depend on consumption size and system capacity (residential, commercial, or industrial). Wahat Energy provides free feasibility studies, an accurate estimator, and competitive turnkey pricing.'],
+            ['q' => 'What is the difference between On Grid, Off Grid, and Hybrid solar systems?', 'a' => 'On-Grid systems connect directly to the utility grid to offset electricity bills. Off-Grid systems rely completely on battery storage for remote locations. Hybrid systems combine grid connection with BESS battery backup for 24/7 reliability.'],
+            ['q' => 'How do BESS (Battery Energy Storage Systems) benefit commercial and industrial facilities?', 'a' => 'BESS systems help factories and commercial buildings manage peak demand tariffs, provide emergency backup power, and store surplus solar energy generated during daytime.'],
+            ['q' => 'Does Wahat Energy operate as a certified Solar EPC Contractor in Saudi Arabia?', 'a' => 'Yes, Wahat Energy is an established Solar EPC Contractor offering complete turnkey solutions: engineering design, procurement, installation, grid connection, and Operation & Maintenance (O&M).'],
+            ['q' => 'What are the benefits of Solar Water Pumping Systems for agricultural farms?', 'a' => 'Solar pumping eliminates costly diesel generators, delivers reliable continuous irrigation for deep wells, and offers long-term operational savings.'],
+            ['q' => 'What warranty and Operation & Maintenance (O&M) services are offered?', 'a' => 'We offer full preventive and corrective maintenance contracts (O&M) alongside up to 12-year equipment warranties and 25-year solar panel performance guarantees.'],
         ],
     ],
 
     // Contact CTA
     'contact' => [
         'title' => 'Ready to Start Your Solar Project?',
-        'subtitle' => 'Contact us today and get a free consultation and a custom quote for your needs',
+        'subtitle' => 'Contact us today for a free consultation and customized solar quote in Saudi Arabia',
         'btn_call' => 'Call Us',
         'btn_whatsapp' => 'WhatsApp',
         'btn_email' => 'Email Us',
-        'phone' => '+967 777 000 000',
+        'phone' => '+966 50 997 7409',
         'email' => 'info@wahatenergy.com',
     ],
 

@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-@section('title', __('site.nav.projects') . ' | ' . __('site.site_name'))
+@section('title', 'مشاريع الطاقة الشمسية في السعودية | سكنية وتجارية وصناعية | واحة إنرجي')
+@section('meta_description', 'استعرض سابقة أعمال ومشاريع شركة واحة إنرجي في السعودية: تركيب طاقة شمسية للمنازل والمصانع، أنظمة On-Grid و Off-Grid و Hybrid، محطات الضخ الشمسي وأنظمة تخزين BESS.')
+@section('meta_keywords', 'تنفيذ مشاريع الطاقة الشمسية, تركيب طاقة شمسية للمنازل, تركيب أنظمة الطاقة الشمسية للمصانع, أنظمة ضخ المياه بالطاقة الشمسية, مقاول طاقة شمسية, Commercial Solar Power Systems, Industrial Solar Energy Solutions, Solar PV Design and Installation')
 
 @section('content')
 

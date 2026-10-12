@@ -45,8 +45,8 @@
     <!-- Dynamic Products -->
     @foreach($products as $product)
     <url>
-        <loc>{{ url('/products/' . $product->slug) }}</loc>
-        <lastmod>{{ $product->updated_at->toAtomString() }}</lastmod>
+        <loc>{{ route('products.show', $product->id) }}</loc>
+        <lastmod>{{ optional($product->updated_at)->toAtomString() ?? now()->toAtomString() }}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -55,8 +55,8 @@
     <!-- Dynamic Projects -->
     @foreach($projects as $project)
     <url>
-        <loc>{{ url('/projects/' . $project->id) }}</loc>
-        <lastmod>{{ $project->updated_at->toAtomString() }}</lastmod>
+        <loc>{{ route('projects.show', $project->id) }}</loc>
+        <lastmod>{{ optional($project->updated_at)->toAtomString() ?? now()->toAtomString() }}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -65,8 +65,8 @@
     <!-- Dynamic Services -->
     @foreach($services as $service)
     <url>
-        <loc>{{ url('/services/' . $service->id) }}</loc>
-        <lastmod>{{ $service->updated_at->toAtomString() }}</lastmod>
+        <loc>{{ route('services.show', $service->slug ?? $service->id) }}</loc>
+        <lastmod>{{ optional($service->updated_at)->toAtomString() ?? now()->toAtomString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

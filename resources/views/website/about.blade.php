@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-@section('title', __('site.nav.about') . ' | ' . __('site.site_name'))
+@section('title', 'من نحن | أفضل شركة طاقة شمسية ومقاول طاقة متجددة في السعودية | واحة إنرجي')
+@section('meta_description', 'تعرف على شركة واحة إنرجي، رائدة حلول وهندسة الطاقة الشمسية والكهرباء في السعودية. مقاول EPC معتمد للمشاريع السكنية والتجارية والصناعية وفق رؤية المملكة 2030.')
+@section('meta_keywords', 'أفضل شركة طاقة شمسية, شركة طاقة متجددة, مقاول طاقة شمسية, شركات الطاقة الشمسية في السعودية, Renewable Energy Company KSA, Solar EPC Contractor Saudi Arabia, Solar Energy Company Riyadh')
 
 @section('content')
 

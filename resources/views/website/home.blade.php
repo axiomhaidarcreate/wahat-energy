@@ -1,6 +1,8 @@
 @extends('website.layouts.app')
 
-@section('title', __('site.site_name') . ' | ' . __('site.site_slogan'))
+@section('title', 'شركة واحة إنرجي | شركة طاقة شمسية في السعودية | توريد وتركيب أنظمة الطاقة المتجددة')
+@section('meta_description', 'أفضل شركة طاقة شمسية ومقاول طاقة متجددة في السعودية والرياض. توريد وتركيب ألواح شمسية للمنازل والمصانع، أنظمة On-Grid و Off-Grid و Hybrid، وبطاريات تخزين BESS بأعلى جودة وأفضل الأسعار.')
+@section('meta_keywords', 'شركة طاقة شمسية في السعودية, شركات الطاقة الشمسية في السعودية, أفضل شركة طاقة شمسية, شركة تركيب ألواح شمسية, شركة أنظمة الطاقة الشمسية, شركة طاقة متجددة, حلول الطاقة الشمسية, مقاول طاقة شمسية, تركيب طاقة شمسية للمنازل, أسعار أنظمة الطاقة الشمسية في السعودية, تكلفة تركيب الطاقة الشمسية, توريد وتركيب الألواح الشمسية, تنفيذ مشاريع الطاقة الشمسية, تركيب أنظمة الطاقة الشمسية للمصانع, شركة صيانة أنظمة الطاقة الشمسية, عروض أسعار الطاقة الشمسية, أنظمة الطاقة الشمسية On Grid, أنظمة الطاقة الشمسية Off Grid, أنظمة الطاقة الشمسية Hybrid, بطاريات تخزين الطاقة BESS, Solar Energy Company in Saudi Arabia, Solar EPC Contractor Saudi Arabia, BESS Battery Energy Storage System')
 
 @section('content')
 
@@ -32,12 +34,12 @@
                     </text>
                 </svg>
                 <div class="logo-inner">
-                    <img src="{{ asset('images/logo.png') }}" alt="{{ __('site.site_name') }} - شعار الشركة">
+                    <img src="{{ asset('images/logo.png') }}" alt="شركة واحة إنرجي - أفضل شركة طاقة شمسية في السعودية">
                 </div>
             </div>
 
             {{-- Company Name --}}
-            <h1 class="hero-company-name">شركة واحة إنرجي للطاقة الشمسية</h1>
+            <h1 class="hero-company-name">شركة واحة إنرجي | شركة طاقة شمسية ومقاول طاقة متجددة في السعودية</h1>
 
             {{-- Subtitle --}}
             <p class="hero-subtitle">{{ __('site.hero.subtitle') }}</p>
