@@ -42,7 +42,7 @@
                     <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
                     <div>
                         <div style="font-weight: 700; color: var(--text-primary);">أرقام الاتصال</div>
-                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; direction: ltr;">0509977409 | 0559113515 | 0509920744</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; direction: ltr;">0509977409 | 0559113515</div>
                     </div>
                 </div>
 
@@ -70,21 +70,7 @@
                     </div>
                 </div>
 
-                <div class="contact-item-block">
-                    <div class="contact-item-icon"><i class="fa-solid fa-id-card"></i></div>
-                    <div>
-                        <div style="font-weight: 700; color: var(--text-primary);">رقم العضوية</div>
-                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px;">1314253</div>
-                    </div>
-                </div>
 
-                <div class="contact-item-block">
-                    <div class="contact-item-icon"><i class="fa-solid fa-file-lines"></i></div>
-                    <div>
-                        <div style="font-weight: 700; color: var(--text-primary);">السجل التجاري</div>
-                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px;">7055105402</div>
-                    </div>
-                </div>
 
                 <div class="contact-item-block">
                     <div class="contact-item-icon"><i class="fa-solid fa-clock"></i></div>

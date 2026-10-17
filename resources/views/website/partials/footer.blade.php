@@ -47,7 +47,7 @@
                 <h4>{{ __('site.footer.contact_title') }}</h4>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-phone"></i>
-                    <span style="direction: ltr;">0509977409 | 0559113515 | 0509920744</span>
+                    <span style="direction: ltr;">0509977409 | 0559113515</span>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-envelope"></i>

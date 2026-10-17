@@ -33,7 +33,7 @@ class ProjectResource extends Resource
                         ->live(onBlur: true)
                         ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                     Forms\Components\TextInput::make('slug')->label('الرابط المباشر (Slug)')->unique(ignoreRecord: true),
-                    Forms\Components\Select::make('customer_id')->label('العميل')->relationship('customer', 'name')->required()->searchable(),
+                    Forms\Components\Select::make('customer_id')->label('العميل')->relationship('customer', 'name')->searchable()->nullable(),
                     Forms\Components\Select::make('order_id')->label('طلب المبيعات المرتبط')->relationship('order', 'order_number')->searchable(),
                     Forms\Components\Select::make('status')->label('مرحلة المشروع')->options([
                         'site_survey' => 'معاينة الموقع',

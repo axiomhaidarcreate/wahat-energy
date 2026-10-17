@@ -474,15 +474,7 @@
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                 </a>
-                <a href="tel:0509920744" class="cta-phone-card">
-                    <div class="phone-icon-circle">
-                        <i class="fa-solid fa-phone"></i>
-                    </div>
-                    <span class="phone-number">0509920744</span>
-                    <a href="https://wa.me/966509920744" target="_blank" class="wa-mini-btn">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </a>
+
             </div>
 
             {{-- Company Info --}}
@@ -491,14 +483,7 @@
                     <i class="fa-solid fa-location-dot"></i>
                     <span>الرياض - العقيق</span>
                 </div>
-                <div class="cta-info-item">
-                    <i class="fa-solid fa-id-card"></i>
-                    <span>رقم العضوية: 1314253</span>
-                </div>
-                <div class="cta-info-item">
-                    <i class="fa-solid fa-file-lines"></i>
-                    <span>س.ت: 7055105402</span>
-                </div>
+
             </div>
 
             <div class="cta-buttons">

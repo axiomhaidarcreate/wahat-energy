@@ -35,7 +35,7 @@
       "image": "{{ asset('images/logo.png') }}",
       "@@id": "{{ url('/') }}",
       "url": "{{ url('/') }}",
-      "telephone": ["0509977409", "0559113515", "0509920744"],
+      "telephone": ["0509977409", "0559113515"],
       "priceRange": "$$",
       "address": {
         "@@type": "PostalAddress",
