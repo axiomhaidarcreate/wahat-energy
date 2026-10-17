@@ -10,8 +10,10 @@
 
 {{-- ═══════════════════ HERO ═══════════════════ --}}
 <section class="hero" id="hero">
-    {{-- Background Image with Overlay --}}
-    <div class="hero-bg-image" style="background-image: url('{{ asset('images/solar_company_hero.png') }}');"></div>
+    {{-- Background Video --}}
+    <video class="hero-bg-video" autoplay muted loop playsinline poster="{{ asset('images/solar_company_hero.png') }}">
+        <source src="{{ asset('videos/hero-bg.mp4') }}" type="video/mp4">
+    </video>
     <div class="hero-overlay"></div>
 
     <div class="container">

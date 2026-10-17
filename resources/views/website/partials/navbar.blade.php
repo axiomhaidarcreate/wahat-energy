@@ -37,9 +37,11 @@
             <a href="{{ route('locale.switch', app()->getLocale() == 'ar' ? 'en' : 'ar') }}" class="lang-switch hide-mobile">
                 <i class="fa-solid fa-globe"></i> {{ __('site.nav.language') }}
             </a>
+            {{-- Staff Login Button (Hidden)
             <a href="{{ url('/admin') }}" class="btn-secondary hide-mobile nav-btn-staff">
                 <i class="fa-solid fa-user-lock"></i> {{ __('site.nav.staff_login') }}
             </a>
+            --}}
             <a href="{{ route('contact') }}" class="btn-primary hide-mobile nav-btn-quote">
                 {{ __('site.nav.request_quote') }}
             </a>
@@ -69,7 +71,9 @@
         {{ __('site.nav.request_quote') }}
     </a>
     
+    {{-- Staff Login (Mobile - Hidden)
     <a href="{{ url('/admin') }}" onclick="toggleMobileMenu()" style="color: #f59e0b; font-size: 1.05rem;"><i class="fa-solid fa-user-lock"></i> {{ __('site.nav.staff_login') }}</a>
+    --}}
     <a href="{{ route('locale.switch', app()->getLocale() == 'ar' ? 'en' : 'ar') }}" class="lang-switch" style="margin-top: 5px; font-size: 1.05rem;">
         <i class="fa-solid fa-globe"></i> {{ __('site.nav.language') }}
     </a>
