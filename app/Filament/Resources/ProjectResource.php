@@ -53,6 +53,13 @@ class ProjectResource extends Resource
                         ->label('صورة المشروع')
                         ->image()
                         ->directory('projects'),
+                    Forms\Components\TextInput::make('youtube_url')
+                        ->label('رابط فيديو يوتيوب')
+                        ->placeholder('https://youtu.be/...')
+                        ->url()
+                        ->nullable()
+                        ->helperText('أضف رابط فيديو يوتيوب للمشروع (اختياري)')
+                        ->suffixIcon('heroicon-o-video-camera'),
                     Forms\Components\Textarea::make('description')
                         ->label('وصف مختصر (يظهر في الكرت)')
                         ->rows(3),

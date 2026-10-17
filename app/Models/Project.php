@@ -10,7 +10,7 @@ class Project extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'project_code', 'name', 'slug', 'customer_id', 'order_id', 'status', 'start_date', 'end_date', 'image_path', 'description', 'content'
+        'project_code', 'name', 'slug', 'customer_id', 'order_id', 'status', 'start_date', 'end_date', 'image_path', 'description', 'content', 'youtube_url'
     ];
 
     protected $casts = [

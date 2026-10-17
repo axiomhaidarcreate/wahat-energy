@@ -80,6 +80,37 @@
                     @endif
                 </table>
 
+                @if($project->youtube_url)
+                @php
+                    $yt = $project->youtube_url;
+                    // Convert youtu.be or youtube.com/watch?v= to embed URL
+                    if (preg_match('/youtu\.be\/([a-zA-Z0-9_\-]+)/', $yt, $m)) {
+                        $videoId = $m[1];
+                    } elseif (preg_match('/[?&]v=([a-zA-Z0-9_\-]+)/', $yt, $m)) {
+                        $videoId = $m[1];
+                    } else {
+                        $videoId = null;
+                    }
+                @endphp
+                @if($videoId)
+                <div style="margin-bottom: 32px;">
+                    <h4 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> فيديو المشروع
+                    </h4>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.08);">
+                        <iframe
+                            src="https://www.youtube.com/embed/{{ $videoId }}"
+                            title="فيديو مشروع {{ $project->name }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: var(--radius-md);">
+                        </iframe>
+                    </div>
+                </div>
+                @endif
+                @endif
+
                 <div style="display: flex; gap: 16px;">
                     <a href="{{ route('contact') }}?project={{ urlencode($project->name) }}" class="btn-primary">
                         <i class="fa-solid fa-paper-plane"></i> طلب مشروع مماثل
