@@ -135,7 +135,12 @@ class WebsiteController extends Controller
             $query->where('status', $request->status);
         }
 
-        $projects = $query->latest()->paginate(9);
+        // المشاريع التي فيها فيديو يوتيوب تظهر أولاً، ثم الأحدث
+        $projects = $query
+            ->orderByRaw('CASE WHEN youtube_url IS NOT NULL AND youtube_url != "" THEN 0 ELSE 1 END')
+            ->latest()
+            ->paginate(9);
+
         return view('website.projects', compact('projects'));
     }
 
