@@ -421,10 +421,22 @@
                 </div>
             </div>
             @empty
-            <div style="grid-column: 1 / -1; text-align: center; padding: 80px 20px;">
-                <i class="fa-solid fa-diagram-project" style="font-size: 4rem; color: var(--primary); opacity: 0.4; margin-bottom: 20px; display: block;"></i>
-                <p style="color: var(--text-secondary); font-size: 1.1rem;">سيتم إضافة المشاريع قريباً</p>
+            {{-- Default sample showcase --}}
+            @for($i = 1; $i <= 6; $i++)
+            <div class="project-card" data-aos="fade-up" data-aos-delay="{{ ($i - 1) * 80 }}">
+                <div class="project-image">
+                    <i class="fa-solid fa-solar-panel"></i>
+                </div>
+                <div class="project-overlay">
+                    <div class="project-meta">
+                        <span>{{ ['Residential', 'Commercial', 'Industrial', 'Agricultural', 'Institutional', 'Hybrid'][$i - 1] }}</span>
+                        <span>2026</span>
+                    </div>
+                    <h3>{{ ['مشروع فيلا سكنية 10KW', 'مشروع مجمع تجاري 50KW', 'مشروع مصنع صناعي 200KW', 'مشروع مضخة زراعية 30KW', 'مشروع مستشفى 100KW', 'مشروع مزرعة دواجن 45KW'][$i - 1] }}</h3>
+                    <p>واحة إنرجي — PRJ-2026-00{{ $i }}</p>
+                </div>
             </div>
+            @endfor
             @endforelse
         </div>
 
