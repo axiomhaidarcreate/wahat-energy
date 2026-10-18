@@ -41,7 +41,7 @@
             </div>
 
             {{-- Company Name --}}
-            <h1 class="hero-company-name">شركة واحة إنرجي | شركة طاقة شمسية ومقاول طاقة متجددة في السعودية</h1>
+            <h1 class="hero-company-name">شركة واحة انرجي شركة رائدة في مشاريع الطاقة الشمسية</h1>
 
             {{-- Subtitle --}}
             <p class="hero-subtitle">{{ __('site.hero.subtitle') }}</p>
@@ -68,7 +68,7 @@
             {{-- Image Side (Right in RTL) --}}
             <div class="about-company-image" data-aos="zoom-in" data-aos-delay="200">
                 <div class="image-wrapper">
-                    <img src="{{ asset('images/solar_company_hero.png') }}" alt="{{ __('site.site_name') }}">
+                    <img src="{{ asset('images/about_company.jpg') }}" alt="{{ __('site.site_name') }}">
                     <div class="image-glow"></div>
                 </div>
             </div>
@@ -278,22 +278,22 @@
         <div class="stats-grid">
             <div class="stat-card" data-aos="fade-up">
                 <div class="stat-icon"><i class="fa-solid fa-diagram-project"></i></div>
-                <div class="stat-value" x-data="counter({{ max($stats['projects'], 150) }})" x-text="count">0</div>
+                <div class="stat-value" x-data="counter({{ max($stats['projects'], 150) }}, 0, '+')" x-text="count">0+</div>
                 <div class="stat-label">{{ __('site.stats.projects_completed') }}</div>
             </div>
             <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-icon"><i class="fa-solid fa-solar-panel"></i></div>
-                <div class="stat-value" x-data="counter(5000)" x-text="count">0</div>
+                <div class="stat-value" x-data="counter(70000, 0, '+')" x-text="count">0+</div>
                 <div class="stat-label">{{ __('site.stats.panels_installed') }}</div>
             </div>
             <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="stat-icon"><i class="fa-solid fa-face-smile"></i></div>
-                <div class="stat-value" x-data="counter({{ max($stats['customers'], 200) }})" x-text="count">0</div>
+                <div class="stat-value" x-data="counter({{ max($stats['customers'], 200) }}, 0, '+')" x-text="count">0+</div>
                 <div class="stat-label">{{ __('site.stats.happy_customers') }}</div>
             </div>
             <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
-                <div class="stat-value" x-data="counter(850)" x-text="count">0</div>
+                <div class="stat-value" x-data="counter(50, 0, '+')" x-text="count">0+</div>
                 <div class="stat-label">{{ __('site.stats.mw_generated') }}</div>
             </div>
         </div>
@@ -564,27 +564,29 @@ function solarCalculator() {
 }
 
 // ──── Counter Animation (Alpine.js) ────
-function counter(target) {
+function counter(target, decimals = (target % 1 !== 0 ? 2 : 0), suffix = '') {
     return {
-        count: 0,
+        count: (decimals > 0 ? (0).toFixed(decimals) : '0') + suffix,
         init() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        this.animateCounter(target);
+                        this.animateCounter(target, decimals, suffix);
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.5 });
             observer.observe(this.$el);
         },
-        animateCounter(target) {
+        animateCounter(target, decimals, suffix) {
             const duration = 2000;
             const start = performance.now();
             const step = (timestamp) => {
                 const progress = Math.min((timestamp - start) / duration, 1);
                 const eased = 1 - Math.pow(1 - progress, 3);
-                this.count = Math.round(eased * target);
+                const val = eased * target;
+                const formatted = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toLocaleString('en-US');
+                this.count = formatted + suffix;
                 if (progress < 1) requestAnimationFrame(step);
             };
             requestAnimationFrame(step);

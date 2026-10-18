@@ -1764,6 +1764,8 @@ ul, ol {
     font-weight: 900;
     color: var(--text-primary);
     margin-bottom: 4px;
+    direction: ltr;
+    display: inline-block;
 }
 
 .stat-label {
