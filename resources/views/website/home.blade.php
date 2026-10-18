@@ -51,9 +51,9 @@
                 <a href="{{ route('about') }}" class="btn-primary">
                     <span>تعرف علينا</span>
                 </a>
-                <a href="{{ route('calculator') }}" class="btn-outline">
-                    <i class="fa-solid fa-calculator"></i>
-                    <span>{{ __('site.hero.btn_calculator') }}</span>
+                <a href="{{ route('contact') }}" class="btn-outline">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>{{ __('site.nav.contact') }}</span>
                 </a>
             </div>
         </div>
@@ -195,82 +195,6 @@
     </div>
 </section>
 
-
-{{-- ═══════════════════ SOLAR CALCULATOR ═══════════════════ --}}
-<section class="calculator-section" id="calculator" x-data="solarCalculator()">
-    <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <h2>{{ __('site.calculator.title') }}</h2>
-            <p>{{ __('site.calculator.subtitle') }}</p>
-        </div>
-        <div class="calculator-container" data-aos="fade-up">
-            {{-- System Type --}}
-            <div class="calc-type-selector">
-                <button class="calc-type-btn" :class="{ active: systemType === 'home' }" @click="systemType = 'home'">
-                    <i class="fa-solid fa-house"></i> {{ __('site.calculator.type_home') }}
-                </button>
-                <button class="calc-type-btn" :class="{ active: systemType === 'business' }" @click="systemType = 'business'">
-                    <i class="fa-solid fa-building"></i> {{ __('site.calculator.type_business') }}
-                </button>
-                <button class="calc-type-btn" :class="{ active: systemType === 'industrial' }" @click="systemType = 'industrial'">
-                    <i class="fa-solid fa-industry"></i> {{ __('site.calculator.type_industrial') }}
-                </button>
-            </div>
-
-            {{-- Form --}}
-            <div class="calc-form-row">
-                <div class="calc-form-group">
-                    <label>{{ __('site.calculator.monthly_bill') }}</label>
-                    <input type="number" x-model.number="monthlyBill" placeholder="50000" min="0">
-                </div>
-                <div class="calc-form-group">
-                    <label>{{ __('site.calculator.area') }}</label>
-                    <input type="number" x-model.number="area" placeholder="50" min="0">
-                </div>
-            </div>
-
-            <div style="text-align: center; margin: 16px 0;">
-                <button class="btn-primary" @click="calculate()" style="font-size: 1.05rem;">
-                    <i class="fa-solid fa-calculator"></i> {{ __('site.calculator.calculate') }}
-                </button>
-            </div>
-
-            {{-- Results --}}
-            <div x-show="showResults" x-transition class="calc-results">
-                <div class="calc-result-card">
-                    <div class="result-value" x-text="results.dailyConsumption + ' {{ __("site.calculator.kwh") }}'"></div>
-                    <div class="result-label">{{ __('site.calculator.daily_consumption') }}</div>
-                </div>
-                <div class="calc-result-card">
-                    <div class="result-value" x-text="results.solarCapacity + ' {{ __("site.calculator.kwp") }}'"></div>
-                    <div class="result-label">{{ __('site.calculator.solar_capacity') }}</div>
-                </div>
-                <div class="calc-result-card">
-                    <div class="result-value" x-text="results.batteryCapacity + ' {{ __("site.calculator.kwh") }}'"></div>
-                    <div class="result-label">{{ __('site.calculator.battery_capacity') }}</div>
-                </div>
-                <div class="calc-result-card">
-                    <div class="result-value" x-text="results.inverterCapacity + ' {{ __("site.calculator.kw") }}'"></div>
-                    <div class="result-label">{{ __('site.calculator.inverter_capacity') }}</div>
-                </div>
-                <div class="calc-result-card">
-                    <div class="result-value" x-text="results.estimatedProduction + ' {{ __("site.calculator.kwh") }}'"></div>
-                    <div class="result-label">{{ __('site.calculator.estimated_production') }}</div>
-                </div>
-                <div class="calc-result-card">
-                    <div class="result-value" x-text="results.estimatedCost + ' {{ __("site.products.currency") }}'"></div>
-                    <div class="result-label">{{ __('site.calculator.estimated_cost') }}</div>
-                </div>
-            </div>
-
-            <div x-show="showResults" x-transition style="text-align: center; margin-top: 24px;">
-                <a href="#contact" class="btn-primary">
-                    <i class="fa-solid fa-paper-plane"></i> {{ __('site.calculator.request_system') }}
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
 {{-- ═══════════════════ STATISTICS ═══════════════════ --}}
 <section class="stats-section">
@@ -517,51 +441,6 @@ function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('active');
 }
 
-// ──── Solar Calculator (Alpine.js) ────
-function solarCalculator() {
-    return {
-        systemType: 'home',
-        monthlyBill: 0,
-        area: 0,
-        showResults: false,
-        results: {
-            dailyConsumption: 0,
-            solarCapacity: 0,
-            batteryCapacity: 0,
-            inverterCapacity: 0,
-            estimatedProduction: 0,
-            estimatedCost: 0
-        },
-        calculate() {
-            if (this.monthlyBill <= 0) return;
-
-            // Cost per kWh varies by type
-            const costPerKwh = { home: 80, business: 70, industrial: 60 };
-            const sunHours = 5.5; // Average sun hours
-            const systemLoss = 0.2; // 20% system losses
-
-            const monthlyKwh = this.monthlyBill / costPerKwh[this.systemType];
-            const dailyKwh = monthlyKwh / 30;
-            const requiredCapacity = Math.ceil((dailyKwh / sunHours) / (1 - systemLoss) * 10) / 10;
-            const batteryCapacity = Math.ceil(dailyKwh * 0.7 * 10) / 10; // 70% backup
-            const inverterCapacity = Math.ceil(requiredCapacity * 1.25 * 10) / 10;
-            const annualProduction = Math.round(requiredCapacity * sunHours * 365 * (1 - systemLoss));
-            const pricePerKw = { home: 800000, business: 700000, industrial: 600000 };
-            const estimatedCost = Math.round(requiredCapacity * pricePerKw[this.systemType]);
-
-            this.results = {
-                dailyConsumption: Math.round(dailyKwh * 10) / 10,
-                solarCapacity: requiredCapacity,
-                batteryCapacity: batteryCapacity,
-                inverterCapacity: inverterCapacity,
-                estimatedProduction: annualProduction,
-                estimatedCost: estimatedCost.toLocaleString()
-            };
-
-            this.showResults = true;
-        }
-    };
-}
 
 // ──── Counter Animation (Alpine.js) ────
 function counter(target, decimals = (target % 1 !== 0 ? 2 : 0), suffix = '') {

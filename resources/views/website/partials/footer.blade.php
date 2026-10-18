@@ -27,7 +27,6 @@
                     <a href="{{ route('services') }}">{{ __('site.nav.services') }}</a>
                     <a href="{{ route('products') }}">{{ __('site.nav.products') }}</a>
                     <a href="{{ route('projects') }}">{{ __('site.nav.projects') }}</a>
-                    <a href="{{ route('calculator') }}">{{ __('site.nav.calculator') }}</a>
                     <a href="{{ route('contact') }}">{{ __('site.nav.contact') }}</a>
                 </div>
             </div>

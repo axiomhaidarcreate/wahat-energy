@@ -234,7 +234,7 @@ return [
         'subtitle' => 'What distinguishes Wahat Energy for Solar Energy?',
         'points' => [
             'Pioneers in alternative solar energy solutions in Saudi Arabia.',
-            'Extensive experience since 2003 in solar energy for industrial and agricultural sectors.',
+            'Extensive certified experience since 2018 in solar energy for industrial and agricultural sectors.',
             'Utilization of the latest technologies to ensure the highest levels of efficiency and quality.',
             'Providing integrated and customized solutions for solar energy systems.',
             'A professional team with high expertise and competence in project execution.',

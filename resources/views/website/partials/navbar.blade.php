@@ -25,9 +25,6 @@
             <a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'active' : '' }}">
                 {{ __('site.nav.gallery') }}
             </a>
-            <a href="{{ route('calculator') }}" class="{{ request()->routeIs('calculator') ? 'active' : '' }}">
-                {{ __('site.nav.calculator') }}
-            </a>
             <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">
                 {{ __('site.nav.contact') }}
             </a>
@@ -62,7 +59,6 @@
     <a href="{{ route('products') }}" onclick="toggleMobileMenu()">{{ __('site.nav.products') }}</a>
     <a href="{{ route('projects') }}" onclick="toggleMobileMenu()">{{ __('site.nav.projects') }}</a>
     <a href="{{ route('gallery') }}" onclick="toggleMobileMenu()">{{ __('site.nav.gallery') }}</a>
-    <a href="{{ route('calculator') }}" onclick="toggleMobileMenu()">{{ __('site.nav.calculator') }}</a>
     <a href="{{ route('contact') }}" onclick="toggleMobileMenu()">{{ __('site.nav.contact') }}</a>
     
     <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin: 15px 0;"></div>
