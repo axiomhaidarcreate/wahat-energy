@@ -236,25 +236,29 @@
             @php
                 $ytId = null;
                 if (!empty($project->youtube_url)) {
-                    preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/', $project->youtube_url, $m);
+                    preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)+([\w-]{11})/', $project->youtube_url, $m);
                     $ytId = $m[1] ?? null;
                 }
+                $hasImage = !empty($project->image_path);
             @endphp
             <a href="{{ route('projects.show', $project->id) }}" class="project-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" style="text-decoration:none; display:block;">
-                <div class="project-image" style="{{ (!$ytId && $project->image_path) ? 'background-image: url(' . asset('storage/' . $project->image_path) . '); background-size: cover; background-position: center;' : '' }}">
-                    @if($ytId)
-                        {{-- YouTube thumbnail as img with auto-fallback --}}
+                <div class="project-image" @if($hasImage) style="background-image: url('{{ asset('storage/' . $project->image_path) }}'); background-size:cover; background-position:center;" @endif>
+                    @if(!$hasImage && $ytId)
                         <img
+                            class="yt-thumb"
+                            data-ytid="{{ $ytId }}"
                             src="https://img.youtube.com/vi/{{ $ytId }}/maxresdefault.jpg"
-                            onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ $ytId }}/hqdefault.jpg';"
                             alt="{{ $project->name }}"
-                            style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;"
+                            style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:none;"
                         >
+                        <div class="yt-thumb-bg" style="position:absolute; inset:0; background: linear-gradient(135deg,#1a2744,#0f172a);"></div>
+                    @elseif(!$hasImage)
+                        <i class="fa-solid fa-solar-panel"></i>
+                    @endif
+                    @if($ytId)
                         <div class="yt-play-btn">
                             <i class="fa-brands fa-youtube"></i>
                         </div>
-                    @elseif(!$project->image_path)
-                        <i class="fa-solid fa-solar-panel"></i>
                     @endif
                 </div>
                 <div class="project-overlay">
@@ -266,19 +270,16 @@
                     </div>
                     <h3>{{ $project->name }}</h3>
                     @if($project->description)
-                        <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px; color: rgba(255,255,255,0.85);">{{ Str::limit($project->description, 100) }}</p>
+                        <p style="font-size:0.9rem; line-height:1.5; margin-bottom:12px; color:rgba(255,255,255,0.85);">{{ Str::limit($project->description, 100) }}</p>
                     @else
                         <p>{{ $project->customer->name ?? '' }} — {{ $project->project_code }}</p>
                     @endif
                 </div>
             </a>
             @empty
-            {{-- Sample projects when DB is empty --}}
             @for($i = 1; $i <= 3; $i++)
             <div class="project-card" data-aos="fade-up" data-aos-delay="{{ ($i - 1) * 100 }}">
-                <div class="project-image">
-                    <i class="fa-solid fa-solar-panel"></i>
-                </div>
+                <div class="project-image"><i class="fa-solid fa-solar-panel"></i></div>
                 <div class="project-overlay">
                     <div class="project-meta">
                         <span>{{ ['Residential', 'Commercial', 'Industrial'][$i - 1] }}</span>
@@ -490,5 +491,63 @@ function counter(target, decimals = (target % 1 !== 0 ? 2 : 0), suffix = '') {
         }
     };
 }
+</script>
+
+<script>
+// ──── Smart YouTube Thumbnail Loader ────
+// يوتيوب يرجع صورة رمادية (120x90) بدل 404 عند عدم توفر الجودة
+// نستخدم canvas نكشف إذا الصورة رمادية أو فيها محتوى حقيقي
+(function() {
+    var qualities = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', '0'];
+
+    function isGrayPlaceholder(img) {
+        try {
+            var c = document.createElement('canvas');
+            c.width = 10; c.height = 10;
+            var ctx = c.getContext('2d');
+            ctx.drawImage(img, 0, 0, 10, 10);
+            var d = ctx.getImageData(0, 0, 10, 10).data;
+            var total = 0, count = 0;
+            for (var i = 0; i < d.length; i += 4) {
+                var gray = (d[i] + d[i+1] + d[i+2]) / 3;
+                total += gray; count++;
+            }
+            var avg = total / count;
+            // الصورة الرمادية الفارغة يكون متوسطها بين 40-80
+            return avg > 35 && avg < 90 && (Math.abs(d[0]-d[1]) < 10 && Math.abs(d[1]-d[2]) < 10);
+        } catch(e) { return false; }
+    }
+
+    function loadThumb(imgEl, ytId, qIndex) {
+        if (qIndex >= qualities.length) {
+            // كل الجودات رمادية — أخفي الصورة وأبقي الخلفية الداكنة
+            imgEl.style.display = 'none';
+            return;
+        }
+        var testImg = new Image();
+        testImg.crossOrigin = 'anonymous';
+        testImg.onload = function() {
+            if (isGrayPlaceholder(this)) {
+                loadThumb(imgEl, ytId, qIndex + 1);
+            } else {
+                imgEl.src = this.src;
+                imgEl.style.display = 'block';
+                var bg = imgEl.parentElement.querySelector('.yt-thumb-bg');
+                if (bg) bg.style.display = 'none';
+            }
+        };
+        testImg.onerror = function() {
+            loadThumb(imgEl, ytId, qIndex + 1);
+        };
+        testImg.src = 'https://img.youtube.com/vi/' + ytId + '/' + qualities[qIndex] + '.jpg';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('img.yt-thumb').forEach(function(imgEl) {
+            var ytId = imgEl.dataset.ytid;
+            if (ytId) loadThumb(imgEl, ytId, 0);
+        });
+    });
+})();
 </script>
 @endsection
