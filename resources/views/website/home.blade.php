@@ -233,9 +233,27 @@
         </div>
         <div class="projects-grid">
             @forelse($projects as $project)
-            <div class="project-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                <div class="project-image" style="{{ $project->image_path ? 'background-image: url(' . asset('storage/' . $project->image_path) . '); background-size: cover; background-position: center;' : '' }}">
-                    @if(!$project->image_path)
+            @php
+                $ytId = null;
+                if (!empty($project->youtube_url)) {
+                    preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/', $project->youtube_url, $m);
+                    $ytId = $m[1] ?? null;
+                }
+            @endphp
+            <a href="{{ route('projects.show', $project->id) }}" class="project-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" style="text-decoration:none; display:block;">
+                <div class="project-image" style="{{ (!$ytId && $project->image_path) ? 'background-image: url(' . asset('storage/' . $project->image_path) . '); background-size: cover; background-position: center;' : '' }}">
+                    @if($ytId)
+                        {{-- YouTube thumbnail as img with auto-fallback --}}
+                        <img
+                            src="https://img.youtube.com/vi/{{ $ytId }}/maxresdefault.jpg"
+                            onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ $ytId }}/hqdefault.jpg';"
+                            alt="{{ $project->name }}"
+                            style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;"
+                        >
+                        <div class="yt-play-btn">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                    @elseif(!$project->image_path)
                         <i class="fa-solid fa-solar-panel"></i>
                     @endif
                 </div>
@@ -253,7 +271,7 @@
                         <p>{{ $project->customer->name ?? '' }} — {{ $project->project_code }}</p>
                     @endif
                 </div>
-            </div>
+            </a>
             @empty
             {{-- Sample projects when DB is empty --}}
             @for($i = 1; $i <= 3; $i++)
