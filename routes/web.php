@@ -8,6 +8,41 @@ use App\Http\Controllers\SitemapController;
 // Sitemap
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
+// YouTube Thumbnail Proxy — يجيب الصورة الحقيقية للفيديو من الخادم
+Route::get('/yt-thumb/{videoId}', function ($videoId) {
+    // تحقق من صحة الـ ID
+    if (!preg_match('/^[\w-]{11}$/', $videoId)) {
+        abort(400);
+    }
+
+    $cacheKey = 'yt_thumb_' . $videoId;
+
+    // نستخدم cache لمدة 24 ساعة لتسريع الطلبات
+    $redirectUrl = cache()->remember($cacheKey, 86400, function () use ($videoId) {
+        // الجودات مرتبة من الأعلى للأدنى
+        $qualities = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', '0'];
+
+        foreach ($qualities as $quality) {
+            $url = "https://img.youtube.com/vi/{$videoId}/{$quality}.jpg";
+            $context = stream_context_create(['http' => ['timeout' => 5]]);
+            $data = @file_get_contents($url, false, $context);
+
+            if ($data) {
+                $info = @getimagesizefromstring($data);
+                // الصورة الرمادية الفارغة دائماً 120×90 — تجاوزها
+                if ($info && $info[0] > 120) {
+                    return $url;
+                }
+            }
+        }
+
+        // آخر احتياطي: الصورة المرقمة دائماً تحتوي فريم حقيقي من الفيديو
+        return "https://img.youtube.com/vi/{$videoId}/0.jpg";
+    });
+
+    return redirect($redirectUrl);
+})->name('yt.thumb');
+
 // Language switch
 Route::get('/locale/{locale}', [WebsiteController::class, 'setLocale'])->name('locale.switch');
 
