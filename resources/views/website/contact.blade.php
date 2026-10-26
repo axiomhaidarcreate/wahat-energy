@@ -42,7 +42,10 @@
                     <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
                     <div>
                         <div style="font-weight: 700; color: var(--text-primary);">أرقام الاتصال</div>
-                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; direction: ltr;">0509977409 | 0559113515</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; direction: ltr;">
+                            <a href="tel:0509977409" style="color: inherit; text-decoration: none;">0509977409</a> | 
+                            <a href="tel:0559113515" style="color: inherit; text-decoration: none;">0559113515</a>
+                        </div>
                     </div>
                 </div>
 
@@ -50,15 +53,27 @@
                     <div class="contact-item-icon" style="background: rgba(37, 211, 102, 0.1); color: #25d366;"><i class="fa-brands fa-whatsapp"></i></div>
                     <div>
                         <div style="font-weight: 700; color: var(--text-primary);">واتساب</div>
-                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; direction: ltr;">0509977409 | 0559113515</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; direction: ltr;">
+                            <a href="https://wa.me/966509977409" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">0509977409</a> | 
+                            <a href="https://wa.me/966559113515" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">0559113515</a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="contact-item-block">
                     <div class="contact-item-icon" style="background: rgba(6, 182, 212, 0.1); color: var(--accent);"><i class="fa-solid fa-envelope"></i></div>
                     <div>
-                        <div style="font-weight: 700; color: var(--text-primary);">{{ __('site.contact.btn_email') }}</div>
-                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px;">{{ __('site.contact.email') }}</div>
+                        <div style="font-weight: 700; color: var(--text-primary);">{{ __('site.contact.email_title') ?? 'البريد الإلكتروني' }}</div>
+                        <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px; direction: ltr; text-align: right;">
+                            <a href="mailto:info@wahat-energy.com.sa" class="contact-email-link" style="color: var(--text-secondary); text-decoration: none; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fa-regular fa-envelope" style="font-size: 0.85rem; color: var(--accent);"></i>
+                                <span>info@wahat-energy.com.sa</span>
+                            </a>
+                            <a href="mailto:eng-alaa@wahat-energy.com.sa" class="contact-email-link" style="color: var(--text-secondary); text-decoration: none; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fa-regular fa-envelope" style="font-size: 0.85rem; color: var(--accent);"></i>
+                                <span>eng-alaa@wahat-energy.com.sa</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -70,13 +85,27 @@
                     </div>
                 </div>
 
-
-
                 <div class="contact-item-block">
                     <div class="contact-item-icon"><i class="fa-solid fa-clock"></i></div>
                     <div>
                         <div style="font-weight: 700; color: var(--text-primary);">{{ __('site.common.working_hours') }}</div>
                         <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px;">{{ __('site.common.sat_thu') }}</div>
+                    </div>
+                </div>
+
+                {{-- Social Media Icons --}}
+                <div class="contact-item-block" style="padding-top: 14px; border-top: 1px solid var(--border-light); margin-top: 4px;">
+                    <div class="contact-item-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--primary);"><i class="fa-solid fa-share-nodes"></i></div>
+                    <div>
+                        <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">{{ __('site.contact.social_media') ?? 'تابعنا على مواقع التواصل' }}</div>
+                        <div class="contact-social-icons">
+                            <a href="https://www.tiktok.com/@wahatenergy" target="_blank" rel="noopener noreferrer" class="contact-social-btn tiktok" aria-label="TikTok" title="TikTok (@wahatenergy)">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a href="https://www.instagram.com/wahatenergy" target="_blank" rel="noopener noreferrer" class="contact-social-btn instagram" aria-label="Instagram" title="Instagram (@wahatenergy)">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
